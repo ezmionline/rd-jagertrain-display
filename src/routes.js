@@ -17,8 +17,6 @@ const router = new Router(on => {
     return component && <App context={state.context}>{component}</App>;
   });
 
-  on('/contact', async () => <ContactPage />);
-
   on('/login', async () => <LoginPage />);
 
   on('/register', async () => <RegisterPage />);
