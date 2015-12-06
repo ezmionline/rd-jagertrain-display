@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import styles from './Header.scss';
 import withStyles from '../../decorators/withStyles';
 import Link from '../Link';
-import Navigation from '../Navigation';
 
 @withStyles(styles)
 class Header extends Component {
