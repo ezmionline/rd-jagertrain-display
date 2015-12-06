@@ -19,9 +19,9 @@ class Footer extends Component {
 
   render() {
     return (
-      <div className="Footer">
+      <footer className="Footer">
         <p>It’s Jager Time!!! Please Drink Irresponsibly #RDJT</p>
-      </div>
+      </footer>
     );
   }
 

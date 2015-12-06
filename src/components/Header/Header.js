@@ -10,7 +10,7 @@ class Header extends Component {
 
   render() {
     return (
-      <header className="header">
+      <header className="Header">
         <h1>Riskdisk Jagertrain 2015</h1>
       </header>
     );

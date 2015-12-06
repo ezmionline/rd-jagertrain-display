@@ -7,7 +7,7 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div id="sidebar">
+      <div className="sidebar">
         <img src={require('./logo.png')} alt="Riskdisk Jagertrain 2015" />
       </div>
     );
