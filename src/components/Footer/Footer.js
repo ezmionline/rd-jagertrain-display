@@ -20,7 +20,8 @@ class Footer extends Component {
   render() {
     return (
       <footer className="Footer">
-        <p>It’s Jager Time!!! Please Drink Irresponsibly #RDJT</p>
+        <img className="Footer-jagertrain" src={require('./jagertrain.png')} alt="Riskdisk Jagertrain - On it, till we vomit!" />
+        <h3>It’s Jager Time!!! Please Drink Irresponsibly #RDJT</h3>
       </footer>
     );
   }
