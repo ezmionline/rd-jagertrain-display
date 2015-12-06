@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './HomePage.scss';
 import withStyles from '../../decorators/withStyles';
+import Passenger from '../Passenger';
 
 @withStyles(styles)
 class HomePage extends Component {
@@ -19,7 +20,7 @@ class HomePage extends Component {
     return (
       <div className="HomePage">
         <div className="HomePage-container">
-          <h2>Home</h2>
+          <Passenger />
         </div>
       </div>
     );

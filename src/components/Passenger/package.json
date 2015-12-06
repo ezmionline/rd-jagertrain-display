@@ -1,0 +1,6 @@
+{
+  "name": "Passenger",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./Passenger.js"
+}
