@@ -10,10 +10,12 @@ class HomePage extends Component {
   };
 
   static contextTypes = {
-
+    onSetTitle: PropTypes.func.isRequired,
   };
 
   render() {
+    const title = 'Riskdisk Jagertrain 2015';
+    this.context.onSetTitle(title);
     return (
       <div className="HomePage">
         <div className="HomePage-container">
