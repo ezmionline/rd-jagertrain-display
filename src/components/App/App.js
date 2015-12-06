@@ -4,6 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import styles from './App.scss';
 import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
+import Sidebar from '../Sidebar';
 import Header from '../Header';
 import Footer from '../Footer';
 
@@ -18,17 +19,15 @@ class App extends Component {
 
   render() {
     return !this.props.error ? (
-      <div>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-md-4">
-              Sidebar to go here
-            </div>
-            <div className="col-md-8">
-              <Header />
-              {this.props.children}
-              <Footer />
-            </div>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-4">
+            <Sidebar />
+          </div>
+          <div className="col-md-8">
+            <Header />
+            {this.props.children}
+            <Footer />
           </div>
         </div>
       </div>
