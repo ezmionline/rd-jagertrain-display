@@ -15,16 +15,33 @@ class Footer extends Component {
     super(props);
 
     this.state = {
-      transactions: 0
+      transactions: {}
     }
 
     this.firebaseRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
-    this.firebaseRef.once("value", (dataSnapshot)=> {
-      var transactions = dataSnapshot.val();
+
+    this.firebaseRef.on("child_added", (transaction)=> {
+      if (this.state.transactions[transaction.key()]) {
+        return;
+      }
+
+      let transactionVal = transaction.val();
+      transactionVal.key = transaction.key();
+      this.state.transactions[transactionVal.key] = transactionVal;
+
       this.setState({
-        transactions: transactions
+        transactions: this.state.transactions
       });
     });
+
+    this.firebaseRef.on("child_removed", (transaction)=> {
+      var key = transaction.key();
+      delete this.state.transactions[key];
+      this.setState({
+        transactions: this.state.transactions
+      });
+    });
+
   }
 
   static propTypes = {
