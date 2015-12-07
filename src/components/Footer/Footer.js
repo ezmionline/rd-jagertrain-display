@@ -15,14 +15,14 @@ class Footer extends Component {
     super(props);
 
     this.state = {
-      totalStops: 0
+      transactions: 0
     }
 
     this.firebaseRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
     this.firebaseRef.once("value", (dataSnapshot)=> {
       var transactions = dataSnapshot.val();
       this.setState({
-        totalStops: _.size(transactions)
+        transactions: transactions
       });
     });
   }
@@ -39,7 +39,7 @@ class Footer extends Component {
       <footer className="Footer">
         <img className="Footer-jagertrain" src={require('./jagertrain.png')} alt="Riskdisk Jagertrain - On it, till we vomit!" />
         <h3>It’s Jager Time!!! Please Drink Irresponsibly #RDJT</h3>
-        <h3 className="Footer-counter">Total Stops: <span>{this.state.totalStops}</span></h3>
+        <h3 className="Footer-counter">Total Stops: <span>{_.size(this.state.transactions)}</span></h3>
       </footer>
     );
   }
