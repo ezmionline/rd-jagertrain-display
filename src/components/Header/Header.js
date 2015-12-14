@@ -1,24 +1,22 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { PropTypes, Component } from 'react';
-import styles from './Footer.scss';
+import styles from './Header.scss';
 import withViewport from '../../decorators/withViewport';
 import withStyles from '../../decorators/withStyles';
-import StopCounter from '../StopCounter';
 
 @withViewport
 @withStyles(styles)
-class Footer extends Component {
+class Header extends Component {
 
   render() {
     return (
-      <footer className="Footer">
-        <h2>All Aboard! #RDJT</h2>
-        <StopCounter />
-      </footer>
+      <header className="Header">
+        <h1>Riskdisk Jagertrain 2015</h1>
+      </header>
     );
   }
 
 }
 
-export default Footer;
+export default Header;
