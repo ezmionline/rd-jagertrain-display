@@ -41,11 +41,11 @@ class HomePage extends Component {
       if (!newItems) return;
 
       var passenger = {
-        id: "",
         forename: "Ben",
         surname: "Danby",
         nickname: "The Guzzler",
-        message: "Some random message to go here..."
+        message: "Some random message to go here...",
+        imageUrl: '/passengers/ben-danby.png'
       }
 
       self.setState({
