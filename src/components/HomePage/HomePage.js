@@ -5,6 +5,8 @@ import IdleScreen from '../IdleScreen';
 import Passenger from '../Passenger';
 import Firebase from 'firebase';
 
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+
 @withStyles(styles)
 class HomePage extends Component {
 
@@ -31,7 +33,6 @@ class HomePage extends Component {
       self.setState({
         customers: customers
       });
-      console.log(customers);
     });
 
     self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
@@ -53,7 +54,6 @@ class HomePage extends Component {
       });
 
       setTimeout(function(){
-        console.log("test");
         self.setState({
           passenger: null
         });
@@ -75,8 +75,6 @@ class HomePage extends Component {
     const title = 'Riskdisk Jagertrain 2015';
     this.context.onSetTitle(title);
 
-    console.log(this.state.passenger);
-
     if (this.state.passenger) {
       return (
         <div className="HomePage">
@@ -88,7 +86,9 @@ class HomePage extends Component {
     }
     else {
       return (
-        <IdleScreen />
+        <ReactCSSTransitionGroup transitionName="IdleScreen" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
+          <IdleScreen />
+        </ReactCSSTransitionGroup>
       )
     }
 
