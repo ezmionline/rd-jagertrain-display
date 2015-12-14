@@ -126,7 +126,11 @@ const appConfig = merge({}, config, {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Custom template',
+      template: './src/index.html',
+      inject: 'body'
+    }),
     new AssetsPlugin({
       path: path.join(__dirname, '../build'),
       filename: 'assets.json',
