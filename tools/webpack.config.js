@@ -11,6 +11,7 @@ import path from 'path';
 import webpack from 'webpack';
 import merge from 'lodash.merge';
 import AssetsPlugin from 'assets-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const DEBUG = !process.argv.includes('--release');
 const VERBOSE = process.argv.includes('--verbose');
@@ -57,7 +58,7 @@ const config = {
   },
 
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin()
   ],
 
   resolve: {
@@ -125,6 +126,7 @@ const appConfig = merge({}, config, {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
   plugins: [
     new webpack.DefinePlugin(GLOBALS),
+    new HtmlWebpackPlugin(),
     new AssetsPlugin({
       path: path.join(__dirname, '../build'),
       filename: 'assets.json',

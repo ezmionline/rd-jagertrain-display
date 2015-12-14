@@ -1,0 +1,9 @@
+{
+  "firebase": "jagertrain-display",
+  "public": "build/public",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
