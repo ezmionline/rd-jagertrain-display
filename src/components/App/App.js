@@ -4,8 +4,6 @@ import React, { PropTypes, Component } from 'react';
 import styles from './App.scss';
 import withContext from '../../decorators/withContext';
 import withStyles from '../../decorators/withStyles';
-import Sidebar from '../Sidebar';
-import Header from '../Header';
 import Footer from '../Footer';
 
 @withContext
@@ -22,7 +20,6 @@ class App extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <Header />
             {this.props.children}
             <Footer />
           </div>

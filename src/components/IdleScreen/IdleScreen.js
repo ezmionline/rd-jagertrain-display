@@ -1,21 +1,21 @@
 /*! React Starter Kit | MIT License | http://www.reactstarterkit.com/ */
 
 import React, { Component } from 'react';
-import styles from './Header.scss';
+import styles from './IdleScreen.scss';
 import withStyles from '../../decorators/withStyles';
 import Link from '../Link';
 
 @withStyles(styles)
-class Header extends Component {
+class IdleScreen extends Component {
 
   render() {
     return (
-      <header className="Header">
+      <div className="IdleScreen">
         <img src={require('./logo.png')} alt="Riskdisk Jagertrain 2015" />
-      </header>
+      </div>
     );
   }
 
 }
 
-export default Header;
+export default IdleScreen;

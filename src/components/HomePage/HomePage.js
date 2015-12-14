@@ -1,6 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import styles from './HomePage.scss';
 import withStyles from '../../decorators/withStyles';
+import IdleScreen from '../IdleScreen';
 import Passenger from '../Passenger';
 import Firebase from 'firebase';
 
@@ -87,9 +88,7 @@ class HomePage extends Component {
     }
     else {
       return (
-        <div>
-          Idle Screen!
-        </div>
+        <IdleScreen />
       )
     }
 

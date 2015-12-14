@@ -1,5 +1,9 @@
 @import '../variables.scss';
 
-.Header {
+.IdleScreen {
   margin-bottom: 40px;
+}
+
+.IdleScreen img {
+  max-width: 100%;
 }
