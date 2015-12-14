@@ -11,7 +11,7 @@ class Header extends Component {
   render() {
     return (
       <header className="Header">
-        <h1>Riskdisk Jagertrain 2015</h1>
+        <img src={require('./logo.png')} alt="Riskdisk Jagertrain 2015" />
       </header>
     );
   }

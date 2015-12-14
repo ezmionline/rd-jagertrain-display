@@ -19,12 +19,9 @@ class App extends Component {
 
   render() {
     return !this.props.error ? (
-      <div className="container-fluid">
+      <div className="container">
         <div className="row">
-          <div className="col-md-4">
-            <Sidebar />
-          </div>
-          <div className="col-md-8">
+          <div className="col-md-12">
             <Header />
             {this.props.children}
             <Footer />
