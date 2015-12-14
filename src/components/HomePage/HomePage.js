@@ -15,18 +15,57 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      customers: {}
+      customers: {},
+      passenger: null
     }
 
-    this.firebaseRef = new Firebase('https://jagertrain.firebaseio.com/customers');
+    var newItems = false;
 
-    this.firebaseRef.once("value", (dataSnapshot)=> {
+    this.firebaseCustomerRef = new Firebase('https://jagertrain.firebaseio.com/customers');
+
+    this.firebaseCustomerRef.once("value", (dataSnapshot)=> {
       var customers = dataSnapshot.val();
       this.setState({
         customers: customers
       });
       console.log(customers);
     });
+
+    this.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
+
+    this.firebaseTransactionsRef.on("child_added", (transaction)=> {
+
+      if (!newItems) return;
+
+      var passenger = {
+        id: "",
+        forename: "Ben",
+        surname: "Danby",
+        nickname: "The Guzzler",
+        message: "Some random message to go here..."
+      }
+
+      this.setState({
+        passenger: passenger
+      });
+
+      var self = this;
+
+      setTimeout(function(){
+        console.log("test");
+        self.setState({
+          passenger: null
+        });
+      }, 2000);
+      // passenger null = idle
+      // so set to null after a timeout
+
+    });
+
+    this.firebaseTransactionsRef.once('value', (dataSnapshot) => {
+      newItems = true;
+    });
+
   }
 
   static contextTypes = {
@@ -37,26 +76,25 @@ class HomePage extends Component {
     const title = 'Riskdisk Jagertrain 2015';
     this.context.onSetTitle(title);
 
-    var passenger = {
-      id: "",
-      forename: "Ben",
-      surname: "Danby",
-      nickname: "The Guzzler",
-      message: "Some random message to go here..."
+    console.log(this.state.passenger);
+
+    if (this.state.passenger) {
+      return (
+        <div className="HomePage">
+          <div className="HomePage-container">
+            <Passenger passenger={this.state.passenger} />
+          </div>
+        </div>
+      );
+    }
+    else {
+      return (
+        <div>
+          Idle Screen!
+        </div>
+      )
     }
 
-    return (
-      <div className="HomePage">
-        <div className="HomePage-container">
-          <Passenger
-            firstName={passenger.forename}
-            lastName={passenger.surname}
-            nickName={passenger.nickname}
-            imageUrl={passenger.id + '.png'}
-            message={passenger.message} />
-        </div>
-      </div>
-    );
   }
 
 }

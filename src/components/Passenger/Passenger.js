@@ -6,19 +6,15 @@ import withStyles from '../../decorators/withStyles';
 class Passenger extends Component {
 
   propTypes: {
-    firstName: React.PropTypes.string.isRequired,
-    lastName: React.PropTypes.string.isRequired,
-    nickName: React.PropTypes.string.isRequired,
-    imageUrl: React.PropTypes.string.isRequired,
-    message: React.PropTypes.string.isRequired
+    passenger: React.PropTypes.object.isRequired,
   }
 
   render() {
     return (
       <div className="Passenger">
-        <img className="Passenger-image" src={this.props.imageUrl} />
-        <h2 className="Passenger-name">{this.props.firstName} &ldquo;{this.props.nickName}&rdquo; {this.props.lastName}</h2>
-        <p className="Passenger-message">{this.props.message}</p>
+        <img className="Passenger-image" src={this.props.passenger.imageUrl} />
+        <h2 className="Passenger-name">{this.props.passenger.forename} &ldquo;{this.props.passenger.nickname}&rdquo; {this.props.passenger.surname}</h2>
+        <p className="Passenger-message">{this.props.passenger.message}</p>
       </div>
     );
   }
