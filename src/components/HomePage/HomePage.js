@@ -14,26 +14,28 @@ class HomePage extends Component {
   constructor(props){
     super(props);
 
-    this.state = {
+    var self = this;
+
+    self.state = {
       customers: {},
       passenger: null
     }
 
     var newItems = false;
 
-    this.firebaseCustomerRef = new Firebase('https://jagertrain.firebaseio.com/customers');
+    self.firebaseCustomerRef = new Firebase('https://jagertrain.firebaseio.com/customers');
 
-    this.firebaseCustomerRef.once("value", (dataSnapshot)=> {
+    self.firebaseCustomerRef.once("value", (dataSnapshot)=> {
       var customers = dataSnapshot.val();
-      this.setState({
+      self.setState({
         customers: customers
       });
       console.log(customers);
     });
 
-    this.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
+    self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
 
-    this.firebaseTransactionsRef.on("child_added", (transaction)=> {
+    self.firebaseTransactionsRef.on("child_added", (transaction)=> {
 
       if (!newItems) return;
 
@@ -45,11 +47,9 @@ class HomePage extends Component {
         message: "Some random message to go here..."
       }
 
-      this.setState({
+      self.setState({
         passenger: passenger
       });
-
-      var self = this;
 
       setTimeout(function(){
         console.log("test");
@@ -57,8 +57,6 @@ class HomePage extends Component {
           passenger: null
         });
       }, 2000);
-      // passenger null = idle
-      // so set to null after a timeout
 
     });
 
