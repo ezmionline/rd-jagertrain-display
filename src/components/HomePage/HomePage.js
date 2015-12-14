@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import styles from './HomePage.scss';
 import withStyles from '../../decorators/withStyles';
 import Passenger from '../Passenger';
+import Firebase from 'firebase';
 
 @withStyles(styles)
 class HomePage extends Component {
@@ -9,6 +10,24 @@ class HomePage extends Component {
   static propTypes = {
 
   };
+
+  constructor(props){
+    super(props);
+
+    this.state = {
+      customers: {}
+    }
+
+    this.firebaseRef = new Firebase('https://jagertrain.firebaseio.com/customers');
+
+    this.firebaseRef.once("value", (dataSnapshot)=> {
+      var customers = dataSnapshot.val();
+      this.setState({
+        customers: customers
+      });
+      console.log(customers);
+    });
+  }
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
@@ -19,10 +38,10 @@ class HomePage extends Component {
     this.context.onSetTitle(title);
 
     var passenger = {
-      firstName: "Ben",
-      lastName: "Danby",
-      nickName: "The Guzzler",
-      imageUrl: "./passengers/ben-danby.png",
+      id: "",
+      forename: "Ben",
+      surname: "Danby",
+      nickname: "The Guzzler",
       message: "Some random message to go here..."
     }
 
@@ -30,10 +49,10 @@ class HomePage extends Component {
       <div className="HomePage">
         <div className="HomePage-container">
           <Passenger
-            firstName={passenger.firstName}
-            lastName={passenger.lastName}
-            nickName={passenger.nickName}
-            imageUrl={passenger.imageUrl}
+            firstName={passenger.forename}
+            lastName={passenger.surname}
+            nickName={passenger.nickname}
+            imageUrl={passenger.id + '.png'}
             message={passenger.message} />
         </div>
       </div>
