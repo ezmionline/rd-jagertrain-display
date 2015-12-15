@@ -89,9 +89,7 @@ class HomePage extends Component {
     }
     else {
       return (
-        <ReactCSSTransitionGroup transitionName="IdleScreen" transitionEnterTimeout={500} transitionLeaveTimeout={300}>
-          <IdleScreen />
-        </ReactCSSTransitionGroup>
+        <IdleScreen />
       )
     }
 
