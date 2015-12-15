@@ -53,6 +53,9 @@ class HomePage extends Component {
         passenger: passenger
       });
 
+      var audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 4) + 1)}.ogg`);
+      audio.play();
+
       setTimeout(function(){
         self.setState({
           passenger: null
