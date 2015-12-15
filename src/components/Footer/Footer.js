@@ -4,7 +4,7 @@ import React, { PropTypes, Component } from 'react';
 import styles from './Footer.scss';
 import withViewport from '../../decorators/withViewport';
 import withStyles from '../../decorators/withStyles';
-import StopCounter from '../StopCounter';
+import Countdown from '../Countdown';
 
 @withViewport
 @withStyles(styles)
@@ -14,7 +14,7 @@ class Footer extends Component {
     return (
       <footer className="Footer">
         <h2>All Aboard!!! #RDJT</h2>
-        <StopCounter />
+        <Countdown />
       </footer>
     );
   }
