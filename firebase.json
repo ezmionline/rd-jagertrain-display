@@ -1,5 +1,5 @@
 {
-  "firebase": "jagertrain-display",
+  "firebase": "jagertrain",
   "public": "build/public",
   "ignore": [
     "firebase.json",
