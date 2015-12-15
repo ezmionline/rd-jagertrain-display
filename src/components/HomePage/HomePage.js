@@ -4,8 +4,7 @@ import withStyles from '../../decorators/withStyles';
 import IdleScreen from '../IdleScreen';
 import Passenger from '../Passenger';
 import Firebase from 'firebase';
-
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import $ from 'jquery';
 
 @withStyles(styles)
 class HomePage extends Component {
@@ -41,25 +40,32 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
-      var passenger = {
-        forename: "Ben",
-        surname: "Danby",
-        nickname: "The Guzzler",
-        message: "Some random message to go here...",
-        imageUrl: '/passengers/ben-danby.png'
-      }
-
-      self.setState({
-        passenger: passenger
-      });
-
       var audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 4) + 1)}.ogg`);
       audio.play();
 
+      var $IdleScreem = $('.IdleScreen').addClass("spin-out");
+
       setTimeout(function(){
+
         self.setState({
-          passenger: null
+          passenger: {
+            forename: "Ben",
+            surname: "Danby",
+            nickname: "The Guzzler",
+            message: "Some random message to go here...",
+            imageUrl: '/passengers/ben-danby.png'
+          }
         });
+
+        setTimeout(function(){
+          var $Passenger = $('.Passenger');
+          $Passenger.fadeOut(1000, function() {
+            self.setState({
+              passenger: null
+            });
+          });
+        }, 5000);
+
       }, 2000);
 
     });
