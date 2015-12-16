@@ -77,8 +77,6 @@ class HomePage extends Component {
       var id = soundPlay.val();
       let audio = new Audio(`/sounds/clip_${id}.ogg`);
       audio.play();
-
-      self.firebaseSoundPlays.remove();
     });
   }
 
