@@ -9,10 +9,6 @@ import $ from 'jquery';
 @withStyles(styles)
 class HomePage extends Component {
 
-  static propTypes = {
-
-  };
-
   constructor(props){
     super(props);
 
@@ -33,6 +29,25 @@ class HomePage extends Component {
         customers: customers
       });
     });
+
+    self.firebaseCustomerRef.on("child_added", (customer)=> {
+      if (this.state.customers[customer.key()]) return;
+
+      let customerVal = customer.val();
+      customerVal.key = customer.key();
+      this.state.customers[customerVal.key] = customerVal;
+      this.setState({customers: this.state.customers});
+    });
+
+    self.firebaseCustomerRef.on("child_changed", (customer)=> {
+      if (!this.state.customers[customer.key()]) return;
+
+      let customerVal = customer.val();
+      customerVal.key = customer.key();
+      this.state.customers[customerVal.key] = customerVal;
+      this.setState({customers: this.state.customers});
+    });
+
 
     self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
 
