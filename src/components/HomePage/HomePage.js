@@ -46,6 +46,7 @@ class HomePage extends Component {
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
 
       var passenger = this.state.customers[transaction.val().customer];
+      passenger.imageUrl = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
 
       setTimeout(function(){
 
