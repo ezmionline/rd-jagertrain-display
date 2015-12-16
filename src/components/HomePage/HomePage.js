@@ -40,7 +40,7 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
-      var audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 4) + 1)}.ogg`);
+      let audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 4) + 1)}.ogg`);
       audio.play();
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
@@ -74,6 +74,15 @@ class HomePage extends Component {
       newItems = true;
     });
 
+    self.firebaseSoundPlaysRef = new Firebase('https://jagertrain.firebaseio.com/soundplays');
+    self.firebaseSoundPlaysRef.on('child_changed', (soundPlay) => {
+
+      var id = soundPlay.val();
+      let audio = new Audio(`/sounds/clip_${id}.ogg`);
+      audio.play();
+
+      self.firebaseSoundPlays.remove();
+    });
   }
 
   static contextTypes = {
