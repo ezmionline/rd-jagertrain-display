@@ -40,7 +40,7 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
-      let audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 5) + 1)}.ogg`);
+      let audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 6) + 1)}.ogg`);
       audio.play();
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
