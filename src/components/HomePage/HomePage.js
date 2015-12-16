@@ -45,16 +45,12 @@ class HomePage extends Component {
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
 
+      var passenger = this.state.customers[transaction.val().customer];
+
       setTimeout(function(){
 
         self.setState({
-          passenger: {
-            forename: "Ben",
-            surname: "Danby",
-            nickname: "The Guzzler",
-            message: "Some random message to go here...",
-            imageUrl: '/passengers/ben-danby.png'
-          }
+          passenger: passenger
         });
 
         setTimeout(function(){
