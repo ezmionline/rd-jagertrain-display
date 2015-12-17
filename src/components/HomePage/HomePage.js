@@ -99,7 +99,10 @@ class HomePage extends Component {
     }
     else {
       return (
-        <IdleScreen />
+        <div className="IdleScreen-wrapper">
+          <IdleScreen />
+          <h2>All Aboard!!! #RDJT</h2>
+        </div>
       )
     }
 
