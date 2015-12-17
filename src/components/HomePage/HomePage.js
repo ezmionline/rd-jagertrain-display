@@ -29,6 +29,14 @@ class HomePage extends Component {
 
     self.firebaseCustomerRef.once("value", (dataSnapshot)=> {
       var customers = dataSnapshot.val();
+
+      snapshot.forEach(function(childSnapshot) {
+        var passenger = childSnapshot.val();
+
+        var img = new Image();
+        img.src = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
+      });
+
       self.setState({
         customers: customers
       });
