@@ -40,12 +40,17 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
+      var passenger = this.state.customers[transaction.val().customer];
+      if (typeof passenger === "undefined") {
+        console.log('id not recognised');
+        return;
+      }
+
       let audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 7) + 1)}.ogg`);
       audio.play();
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
 
-      var passenger = this.state.customers[transaction.val().customer];
       passenger.imageUrl = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
 
       setTimeout(function(){
