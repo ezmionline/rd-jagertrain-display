@@ -13,7 +13,6 @@ class Footer extends Component {
   render() {
     return (
       <footer className="Footer">
-        <h2>All Aboard!!! #RDJT</h2>
         <StopCounter />
       </footer>
     );

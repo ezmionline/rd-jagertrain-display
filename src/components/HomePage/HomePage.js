@@ -25,6 +25,14 @@ class HomePage extends Component {
 
     self.firebaseCustomerRef.once("value", (dataSnapshot)=> {
       var customers = dataSnapshot.val();
+
+      dataSnapshot.forEach(function(childSnapshot) {
+        var passenger = childSnapshot.val();
+
+        var img = new Image();
+        img.src = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
+      });
+
       self.setState({
         customers: customers
       });
@@ -55,12 +63,17 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
+      var passenger = this.state.customers[transaction.val().customer];
+      if (typeof passenger === "undefined") {
+        console.log('id not recognised');
+        return;
+      }
+
       let audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 7) + 1)}.ogg`);
       audio.play();
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
 
-      var passenger = this.state.customers[transaction.val().customer];
       passenger.imageUrl = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
 
       setTimeout(function(){
@@ -114,7 +127,10 @@ class HomePage extends Component {
     }
     else {
       return (
-        <IdleScreen />
+        <div className="IdleScreen-wrapper">
+          <IdleScreen />
+          <h2>All Aboard!!! #RDJT</h2>
+        </div>
       )
     }
 
