@@ -34,7 +34,7 @@ class HomePage extends Component {
         var passenger = childSnapshot.val();
 
         var img = new Image();
-        img.src = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
+        img.src = '/passengers/' + passenger.forename.toLowerCase() + '_' + passenger.surname.toLowerCase() + '.png';
       });
 
       self.setState({
