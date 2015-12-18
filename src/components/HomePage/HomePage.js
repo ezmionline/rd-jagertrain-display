@@ -42,6 +42,28 @@ class HomePage extends Component {
       });
     });
 
+    self.firebaseCustomerRef.on("child_added", (customer)=> {
+      if (self.state.customers[customer.key()]) return null;
+
+      let customerVal = customer.val();
+      customerVal.key = customer.key;
+      self.state.customers[customerVal.key] = customerVal;
+      self.setState({
+        customers: self.state.customers
+      });
+    });
+
+    self.firebaseCustomerRef.on("child_changed", (customer)=> {
+      if (!self.state.customers[customer.key()]) return null;
+
+      let customerVal = customer.val();
+      customerVal.key = customer.key;
+      self.state.customers[customerVal.key] = customerVal;
+      self.setState({
+        customers: self.state.customers
+      });
+    });
+
     self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
 
     self.firebaseTransactionsRef.on("child_added", (transaction)=> {
