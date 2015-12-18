@@ -30,7 +30,7 @@ class HomePage extends Component {
         var passenger = childSnapshot.val();
 
         var img = new Image();
-        img.src = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
+        img.src = '/passengers/' + passenger.forename.toLowerCase() + '_' + passenger.surname.toLowerCase() + '.png';
       });
 
       self.setState({
@@ -55,7 +55,6 @@ class HomePage extends Component {
       this.state.customers[customerVal.key] = customerVal;
       this.setState({customers: this.state.customers});
     });
-
 
     self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
 
