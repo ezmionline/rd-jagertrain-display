@@ -62,7 +62,7 @@ class HomePage extends Component {
 
       if (!newItems) return;
 
-      var passenger = this.state.customers[transaction.val().customer];
+      var passenger = self.state.customers[transaction.val().customer];
       if (typeof passenger === "undefined") {
         console.log('id not recognised');
         return;
@@ -73,7 +73,7 @@ class HomePage extends Component {
 
       var $IdleScreem = $('.IdleScreen').addClass("spin-out");
 
-      passenger.imageUrl = '/passengers/' + passenger.forename.toLowerCase() + '-' + passenger.surname.toLowerCase() + '.png';
+      passenger.imageUrl = '/passengers/' + passenger.forename.toLowerCase() + '_' + passenger.surname.toLowerCase() + '.png';
 
       setTimeout(function(){
 
