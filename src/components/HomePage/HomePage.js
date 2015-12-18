@@ -23,51 +23,6 @@ class HomePage extends Component {
       customers: {},
       passenger: null
     }
-
-    var newItems = false;
-
-    self.firebaseCustomerRef = new Firebase('https://jagertrain.firebaseio.com/customers');
-
-    self.firebaseCustomerRef.once("value", (dataSnapshot)=> {
-      var customers = dataSnapshot.val();
-      self.setState({
-        customers: customers
-      });
-    });
-
-    self.firebaseTransactionsRef = new Firebase('https://jagertrain.firebaseio.com/transactions');
-
-    self.firebaseTransactionsRef.on("child_added", (transaction)=> {
-
-      if (!newItems) return;
-
-      var passenger = {
-        forename: "Ben",
-        surname: "Danby",
-        nickname: "The Guzzler",
-        message: "Some random message to go here...",
-        imageUrl: '/passengers/ben-danby.png'
-      }
-
-      self.setState({
-        passenger: passenger
-      });
-
-      var audio = new Audio(`/sounds/clip_${Math.floor((Math.random() * 4) + 1)}.ogg`);
-      audio.play();
-
-      setTimeout(function(){
-        self.setState({
-          passenger: null
-        });
-      }, 2000);
-
-    });
-
-    this.firebaseTransactionsRef.once('value', (dataSnapshot) => {
-      newItems = true;
-    });
-
   }
 
   static contextTypes = {
